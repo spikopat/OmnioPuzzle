@@ -11,7 +11,8 @@ public enum BlockType {
 public class Puzzle : MonoBehaviour {
     public BlockType blockType;
     public GameObject[] blockObjects;
-    
+    public bool isPuzzleOnGround;
+
     public void SetBlocks(int blockNumb) {
         switch (blockNumb) {
             case 0:

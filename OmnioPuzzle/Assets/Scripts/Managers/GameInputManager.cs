@@ -72,8 +72,12 @@ public class GameInputManager : MonoBehaviour {
         if (GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y - 1].blockType == BlockType.Obstacle)
             return;
 
-        //1 kare soldaki kare, o karenin üzerindekiler ve altındakileri kontrol et. Engel varsa return
-        
+        //1 kare soldaki kare, o karenin altındakileri kontrol et. Engel varsa return
+        if (fruitCurrentPos.x + 1 != GameSceneManagers.Spawn.grid.GetLength(0)) {
+            if (GameSceneManagers.Spawn.grid[fruitCurrentPos.x + 1, fruitCurrentPos.y - 1].blockType == BlockType.Obstacle)
+                return;
+        }
+
         //Çevirme işlemleri.
         GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, 90);
         GameSceneManagers.Spawn.spawnedFruitWithFork.TurnLeft();

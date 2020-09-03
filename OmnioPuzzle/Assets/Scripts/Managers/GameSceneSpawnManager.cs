@@ -6,8 +6,13 @@ public enum LevelEnum {
     Level1,
     Level2
 }
-public class GameSceneSpawnManager : MonoBehaviour {
+public struct FruitCurrentPos {
+    public int x;
+    public int y;
+}
 
+public class GameSceneSpawnManager : MonoBehaviour {
+    
     public LevelEnum levelEnum;
 
     int[,] level1 = { 
@@ -32,7 +37,7 @@ public class GameSceneSpawnManager : MonoBehaviour {
     public float offsetValue;
     #endregion
 
-    Puzzle[,] grid;
+    public Puzzle[,] grid;
     int z, x;
     float boardWoodSize;
     public float fruitWithForkSize;
@@ -87,12 +92,26 @@ public class GameSceneSpawnManager : MonoBehaviour {
         fruitWithForkSize = fruitWithFork.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size.y;
     }
 
+    public FruitCurrentPos GetFruitCurrentPos() {
+        FruitCurrentPos fruitCurrentPos = new FruitCurrentPos();
+        for (int i = 0; i < grid.GetLength(0); i++) {
+            for (int j = 0; j < grid.GetLength(1); j++) {
+                if (grid[i, j].isPuzzleOnGround) { 
+                    fruitCurrentPos.x = i;
+                    fruitCurrentPos.y = j;
+                }
+            }
+        }
+        return fruitCurrentPos;
+    }
+
     #region UNITY_FUNCTIONS
     private void Start() {
         CreateGridArray();
         GetBounds();
         SpawnLevel();
         SpawnForkWithFruit();
+        
     }
     #endregion
 

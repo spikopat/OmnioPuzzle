@@ -627,15 +627,13 @@ MonoBehaviour:
     type: 3}
   boardWood: {fileID: 1448396670037941226, guid: 21359fd980ff1d64a91a69e2f91143b0,
     type: 3}
-  boardChocolate: {fileID: 3797187138298426938, guid: 06faf20bcc5895244b7f5f1daee68f76,
-    type: 3}
   fruitWithFork: {fileID: 1135381484270507573, guid: de17fd37f5e90b642838bba235b11171,
     type: 3}
   boardScript: {fileID: 1705848368}
-  z: 0
-  x: 0
   offsetValue: 0.005
+  fruitWithForkSize: 0
   lastSpawnedObject: {fileID: 0}
+  spawnedFruitWithFork: {fileID: 0}
 --- !u!114 &1490014337
 MonoBehaviour:
   m_ObjectHideFlags: 0

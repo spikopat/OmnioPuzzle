@@ -88,6 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1448396670037941229}
   - component: {fileID: 6616252420262070195}
+  - component: {fileID: 43336414702249541}
   m_Layer: 0
   m_Name: BoardWood
   m_TagString: Untagged
@@ -126,6 +127,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockType: 0
   blockObjects: []
+--- !u!65 &43336414702249541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448396670037941226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: -0.21, z: 0}
 --- !u!1 &3885477715338881355
 GameObject:
   m_ObjectHideFlags: 0

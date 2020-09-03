@@ -18,11 +18,13 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveLeft() {
-        Debug.Log("Left");
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, 90);
+        GameSceneManagers.Spawn.spawnedFruitWithFork.TurnLeft();
     }
 
     void MoveRight() {
-        Debug.Log("Right");
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnRightPoint.position, Vector3.back, 90);
+        GameSceneManagers.Spawn.spawnedFruitWithFork.TurnRight();
     }
 
     private void PCInput() {

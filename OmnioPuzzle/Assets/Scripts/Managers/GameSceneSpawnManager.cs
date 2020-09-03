@@ -29,8 +29,7 @@ public class GameSceneSpawnManager : MonoBehaviour {
     [Header("Board")]
     public BoardScript boardScript;
 
-    [SerializeField]
-    float offsetValue;
+    public float offsetValue;
     #endregion
 
     Puzzle[,] grid;
@@ -41,6 +40,7 @@ public class GameSceneSpawnManager : MonoBehaviour {
     //Seçilmiş olan levelin değerlerini tutar.
     int[,] selectedLevel;
     public Transform lastSpawnedObject;
+    public FruitWithForkScript spawnedFruitWithFork;
 
     void SpawnLevel() {
         GameObject spawnedObject;
@@ -60,7 +60,9 @@ public class GameSceneSpawnManager : MonoBehaviour {
                 lastSpawnedObject = spawnedObject.transform;
             }
         }
-        Instantiate(fruitWithFork, new Vector3(lastSpawnedObject.position.x, lastSpawnedObject.position.y + (boardWoodSize / 4), lastSpawnedObject.position.z), Quaternion.Euler(0, 90, 0));
+        GameObject spawnedForkWithObj = Instantiate(fruitWithFork, new Vector3(lastSpawnedObject.position.x, lastSpawnedObject.position.y + (boardWoodSize / 4), lastSpawnedObject.position.z), Quaternion.Euler(0, 90, 0));
+        spawnedFruitWithFork = spawnedForkWithObj.GetComponent<FruitWithForkScript>();
+        lastSpawnedObject.GetComponent<Puzzle>().isPuzzleOnGround = true;
     }
 
     #region UNITY_FUNCTIONS

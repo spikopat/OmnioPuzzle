@@ -35,7 +35,7 @@ public class GameSceneSpawnManager : MonoBehaviour {
     Puzzle[,] grid;
     int z, x;
     float boardWoodSize;
-    float fruitWithForkSize;
+    public float fruitWithForkSize;
 
     //Seçilmiş olan levelin değerlerini tutar.
     int[,] selectedLevel;
@@ -56,17 +56,19 @@ public class GameSceneSpawnManager : MonoBehaviour {
                 spawnedObject.transform.SetParent(boardScript.cubeTransform);
                 Puzzle spawnedPuzzle = spawnedObject.GetComponent<Puzzle>();
                 spawnedPuzzle.SetBlocks(selectedLevel[i, j]);
-                //grid[i,j] = spawnedPuzzle;
+                grid[i,j] = spawnedPuzzle;
                 lastSpawnedObject = spawnedObject.transform;
             }
         }
+    }
+
+    void SpawnForkWithFruit() {
         GameObject spawnedForkWithObj = Instantiate(fruitWithFork, new Vector3(lastSpawnedObject.position.x, lastSpawnedObject.position.y + (boardWoodSize / 4), lastSpawnedObject.position.z), Quaternion.Euler(0, 90, 0));
         spawnedFruitWithFork = spawnedForkWithObj.GetComponent<FruitWithForkScript>();
         lastSpawnedObject.GetComponent<Puzzle>().isPuzzleOnGround = true;
     }
 
-    #region UNITY_FUNCTIONS
-    private void Start() {
+    void CreateGridArray() {
         if (levelEnum == LevelEnum.Level1) {
             z = level1.GetLength(0);
             x = level1.GetLength(1);
@@ -78,13 +80,20 @@ public class GameSceneSpawnManager : MonoBehaviour {
             x = level2.GetLength(1);
         }
         grid = new Puzzle[z, x];
-        GetBounds();
-        SpawnLevel();
     }
-    #endregion
 
     void GetBounds() {
         boardWoodSize = boardWood.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size.x;
         fruitWithForkSize = fruitWithFork.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size.y;
     }
+
+    #region UNITY_FUNCTIONS
+    private void Start() {
+        CreateGridArray();
+        GetBounds();
+        SpawnLevel();
+        SpawnForkWithFruit();
+    }
+    #endregion
+
 }

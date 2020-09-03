@@ -10,11 +10,13 @@ public class GameInputManager : MonoBehaviour {
     public InputMethod inputType;
 
     void MoveForward() {
-        Debug.Log("Forward");
+        Vector3 currentPos = GameSceneManagers.Spawn.spawnedFruitWithFork.transform.position;
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.position = new Vector3(currentPos.x, currentPos.y, currentPos.z + GameSceneManagers.Spawn.fruitWithForkSize + GameSceneManagers.Spawn.offsetValue);
     }
 
     void MoveBack() {
-        Debug.Log("Back");
+        Vector3 currentPos = GameSceneManagers.Spawn.spawnedFruitWithFork.transform.position;
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.position = new Vector3(currentPos.x, currentPos.y, currentPos.z - (GameSceneManagers.Spawn.fruitWithForkSize + GameSceneManagers.Spawn.offsetValue));
     }
 
     void MoveLeft() {

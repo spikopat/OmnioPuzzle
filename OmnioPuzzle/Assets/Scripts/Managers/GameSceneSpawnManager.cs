@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum LevelEnum {
     Level1,
-    Level2
+    Level2,
+    Level3
 }
 public struct FruitCurrentPos {
     public int x;
@@ -23,6 +24,11 @@ public class GameSceneSpawnManager : MonoBehaviour {
     int[,] level2 = {
         { 1, 2, 1, 1, 2},
         { 1, 1, 0, 2, 3},
+        { 2, 1, 2, 1, 1}
+    };
+    int[,] level3 = {
+        { 1, 2, 1, 1, 2},
+        { 1, 1, 3, 2, 3},
         { 2, 1, 2, 1, 1}
     };
 
@@ -83,6 +89,11 @@ public class GameSceneSpawnManager : MonoBehaviour {
             selectedLevel = level2;
             z = level2.GetLength(0);
             x = level2.GetLength(1);
+        }
+        else if (levelEnum == LevelEnum.Level3) {
+            selectedLevel = level3;
+            z = level3.GetLength(0);
+            x = level3.GetLength(1);
         }
         grid = new Puzzle[z, x];
     }

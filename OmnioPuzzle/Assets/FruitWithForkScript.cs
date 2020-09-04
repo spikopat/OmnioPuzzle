@@ -25,8 +25,10 @@ public class FruitWithForkScript : MonoBehaviour {
         currentTurnRightPoint = turnPoints[(i + 1) % turnPoints.Length];
 
         //Çikolatalanan yüzeyi aktif et.
-        if (chocolated)
+        if (chocolated) { 
             chocolateSurfaces[i].SetActive(true);
+            chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
+        }
     }
 
     public void TurnLeft(bool chocolated) {
@@ -35,19 +37,27 @@ public class FruitWithForkScript : MonoBehaviour {
         currentTurnRightPoint = turnPoints[((i + 1) + turnPoints.Length) % turnPoints.Length];
 
         //Çikolatalanan yüzeyi aktif et.
-        if (chocolated)
+        if (chocolated) {
             chocolateSurfaces[i].SetActive(true);
+            chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
+        }
     }
 
     public void MoveForward(bool chocolated) {
         //Çikolatalanan yüzeyi aktif et.
-        if (chocolated)
+        //Çikolatalanan yüzeyi aktif et.
+        if (chocolated) {
             chocolateSurfaces[i].SetActive(true);
+            chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
+        }
     }
 
     public void MoveBack(bool chocolated) {
         //Çikolatalanan yüzeyi aktif et.
-        if (chocolated)
+        //Çikolatalanan yüzeyi aktif et.
+        if (chocolated) {
             chocolateSurfaces[i].SetActive(true);
+            chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
+        }
     }
 }

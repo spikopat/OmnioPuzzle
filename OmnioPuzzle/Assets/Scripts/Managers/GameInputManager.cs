@@ -11,6 +11,8 @@ public class GameInputManager : MonoBehaviour {
     FruitCurrentPos fruitCurrentPos;
 
     public InputMethod inputType;
+    //Hareket denemeleri coroutinelerinde kullanılıyor.
+    bool tryToMove;
 
     bool CanMoveForward() {
         fruitCurrentPos = GameSceneManagers.Spawn.GetFruitCurrentPos();
@@ -27,8 +29,13 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveForward() {
-        if (!CanMoveForward())
+        if (!CanMoveForward()) {
+            //Bu noktada küçük bir animasyon tetikle.
             return;
+        }
+        if (tryToMove) {
+            return;
+        }
 
         //Arkada çikolata varsa
         bool chocolated = false;
@@ -64,8 +71,13 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveBack() {
-        if (!CanMoveBack())
+        if (!CanMoveBack()) { 
+            //Bu noktada küçük bir animasyon tetikle.
             return;
+        }
+        if (tryToMove) {
+            return;
+        }
 
         //Arkada çikolata varsa
         bool chocolated = false;
@@ -106,8 +118,16 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveLeft() {
-        if (!CanMoveLeft())
+        if (!CanMoveLeft()) {
+            //Bu noktada küçük bir animasyon tetikle.
+            if (!tryToMove) { 
+                StartCoroutine(TryTurnLeft());
+            }
             return;
+        }
+        if (tryToMove) {
+            return;
+        }
 
         //Solda çikolata varsa
         bool chocolated = false;
@@ -122,6 +142,15 @@ public class GameInputManager : MonoBehaviour {
         //Pozisyonun değiştiğini kaydet.
         GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y].isPuzzleOnGround = false;
         GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y - 1].isPuzzleOnGround = true;
+    }
+
+    IEnumerator TryTurnLeft() {
+        tryToMove = true;
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, 20 );
+        yield return new WaitForSeconds(0.5f);
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, -20 );
+        tryToMove = false;
+        yield return null;
     }
 
     bool CanMoveRight() {
@@ -146,9 +175,16 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveRight() {
-        if (!CanMoveRight())
+        if (!CanMoveRight()) {
+            //Bu noktada küçük bir animasyon tetikle.
+            if (!tryToMove) {
+                StartCoroutine(TryTurnRight());
+            }
             return;
-
+        }
+        if (tryToMove) {
+            return;
+        }
         //Sağda çikolata varsa
         bool chocolated = false;
         if (GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y + 1].blockType == BlockType.Chocolate)
@@ -161,6 +197,15 @@ public class GameInputManager : MonoBehaviour {
         //Pozisyonun değiştiğini kaydet.
         GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y].isPuzzleOnGround = false;
         GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y + 1].isPuzzleOnGround = true;
+    }
+
+    IEnumerator TryTurnRight() {
+        tryToMove = true;
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.back, 20);
+        yield return new WaitForSeconds(0.5f);
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.back, -20);
+        tryToMove = false;
+        yield return null;
     }
 
     private void PCInput() {

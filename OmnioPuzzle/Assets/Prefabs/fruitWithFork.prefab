@@ -183,9 +183,10 @@ GameObject:
   - component: {fileID: 3312000329628141544}
   - component: {fileID: 731650971723520348}
   - component: {fileID: 3818941081173873374}
+  - component: {fileID: 6584709664309323092}
   m_Layer: 0
   m_Name: TopChocolate
-  m_TagString: Untagged
+  m_TagString: FruitChocolate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +252,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6584709664309323092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225977436790994560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7661239, y: 0.10931244, z: 0.7661241}
+  m_Center: {x: -0.00017829813, y: 0.019546982, z: 0.000044760796}
 --- !u!1 &1940814386176810262
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,13 +276,14 @@ GameObject:
   - component: {fileID: 7775379871537079708}
   - component: {fileID: 5151860089688887648}
   - component: {fileID: 7263360841312989555}
+  - component: {fileID: 5722881564788312488}
   m_Layer: 0
   m_Name: RightChocolate
-  m_TagString: Untagged
+  m_TagString: FruitChocolate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7775379871537079708
 Transform:
   m_ObjectHideFlags: 0
@@ -330,6 +345,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5722881564788312488
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940814386176810262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7661239, y: 0.10931244, z: 0.7661241}
+  m_Center: {x: -0.00017829813, y: 0.019546982, z: 0.000044760796}
 --- !u!1 &2574661682549343676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5133,9 +5161,10 @@ GameObject:
   - component: {fileID: 5035225908818099708}
   - component: {fileID: 6761681959678626425}
   - component: {fileID: 1933579803711219693}
+  - component: {fileID: 6721433990022278659}
   m_Layer: 0
   m_Name: LeftChocolate
-  m_TagString: Untagged
+  m_TagString: FruitChocolate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5201,6 +5230,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6721433990022278659
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3352690909227198135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7661239, y: 0.10931244, z: 0.7661241}
+  m_Center: {x: -0.00017829813, y: 0.019546982, z: 0.000044760796}
 --- !u!1 &4785666606384933444
 GameObject:
   m_ObjectHideFlags: 0
@@ -5212,9 +5254,10 @@ GameObject:
   - component: {fileID: 2210865348753629889}
   - component: {fileID: 4325113715813416460}
   - component: {fileID: 4498052433931132925}
+  - component: {fileID: 6977347799395588109}
   m_Layer: 0
   m_Name: BottomChocolate
-  m_TagString: Untagged
+  m_TagString: FruitChocolate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5280,6 +5323,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6977347799395588109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4785666606384933444}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7661239, y: 0.10931244, z: 0.7661241}
+  m_Center: {x: -0.00017829813, y: 0.019546982, z: 0.000044760796}
 --- !u!1 &5185282819163892151
 GameObject:
   m_ObjectHideFlags: 0

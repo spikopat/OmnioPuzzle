@@ -32,14 +32,14 @@ public class GameManager : MonoBehaviour {
     //Çatalı döndür ve 3.animasyonu tetikle.
     void FinishAnim2(GameObject temp) {
         temp = temp.transform.GetChild(0).gameObject;
-        temp.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.1f).SetLoops(4, LoopType.Incremental).SetEase(Ease.Linear).OnComplete(() => FinishAnim3());
+        temp.transform.DOLocalRotate(new Vector3(90, 0, 0), 0.1f).SetLoops(3, LoopType.Incremental).SetEase(Ease.Linear).OnComplete(() => FinishAnim3());
     }
 
     //Çatalı dışarı at ve 4.animasyonu tetikle.
     void FinishAnim3() {
         GameObject temp = GameSceneManagers.Spawn.spawnedFruitWithFork.gameObject;
-        temp.transform.DORotate(new Vector3(0, -90, 0), 1).OnComplete(() => FinishAnim4(temp));
-        temp.transform.DOMove(new Vector3(-3, 0, 0), 1.5f);
+        temp.transform.DORotate(new Vector3(0, -90, 0), 1).OnComplete(() => FinishAnim4(temp)).SetDelay(0.5f);
+        temp.transform.DOMove(new Vector3(-3, 0, 0), 1.5f).SetDelay(0.5f);
     }
 
     //Bitiş kamerası animasyonunu aktif et, çikolata kabının animasyonlarını tetikle ve çatallı meyveyi yok et.

@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour {
     #region FROM_INSPECTOR
     public bool isGameActive;
     public bool isGameFinished;
-
+    public float lastChocolatedTime;
     private int chocolatedSurface;
     public int ChocolatedSurface {
         get {
             return chocolatedSurface;
         }
         set {
+            lastChocolatedTime = Time.time;
             chocolatedSurface = value;
             if (chocolatedSurface == 4) {
                 isGameFinished = true;
@@ -61,6 +62,13 @@ public class GameManager : MonoBehaviour {
         } else {
             Time.timeScale = 0;
         }
+        if (!isGameFinished) {
+            if (Time.time - lastChocolatedTime > 10) {
+                GameSceneManagers.UI.inGamePanel.levelFailedText.SetActive(true);
+                isGameFinished = true;
+            }
+        }
+       
     }
     #endregion
 

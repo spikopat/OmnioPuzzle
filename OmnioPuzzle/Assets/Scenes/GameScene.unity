@@ -598,11 +598,11 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747843666}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4168cdef32bc15942b82bbcb7d9b1c65, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -778,7 +778,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4168cdef32bc15942b82bbcb7d9b1c65, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1215,6 +1215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   isGameFinished: 0
+  lastChocolatedTime: 0
 --- !u!114 &1705848368 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8114087753915386504, guid: 9c31b491dba521f438a7c879ca36c0df,

@@ -6,6 +6,10 @@ public class GameSceneUIManager : MonoBehaviour {
 
     public GameObject activeMenu;
 
+    [Space(10)]
+    public IngamePanel inGamePanel;
+    
+
     //Mevcut menüyü kapatır, parametre olarak gönderilen menüyü açar.
     public void ChangeActiveUI(GameObject newPanel) {
         if (activeMenu != null) {
@@ -21,7 +25,7 @@ public class GameSceneUIManager : MonoBehaviour {
     
 
     private void Start() {
-        //ChangeActiveUI(inGamePanel.gameObject);
+        ChangeActiveUI(inGamePanel.gameObject);
     }
 
 }

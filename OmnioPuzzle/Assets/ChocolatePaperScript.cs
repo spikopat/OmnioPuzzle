@@ -37,7 +37,7 @@ public class ChocolatePaperScript : MonoBehaviour {
     void ThirdState() {
         //confitiParticles.SetActive(true);
         //confitiParticles.GetComponent<ParticleSystem>().Play();
-
+        GameSceneManagers.UI.inGamePanel.levelPassedText.SetActive(true);
         transform.DORotate(new Vector3(0, 0, 0), 1, RotateMode.FastBeyond360)
             .SetLoops(1, LoopType.Incremental)
             .SetEase(Ease.OutQuad);

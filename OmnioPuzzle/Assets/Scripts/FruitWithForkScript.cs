@@ -97,6 +97,7 @@ public class FruitWithForkScript : MonoBehaviour {
             else {
                 //Cameranın bitiş animasyonunu tetikle.
                 Camera.main.GetComponent<Animator>().SetTrigger("CameraFinishAnim");
+                GameObject.FindObjectOfType<ChocolatePaperScript>().FirstState();
                 Destroy(gameObject);
             }
         }

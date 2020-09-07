@@ -747,7 +747,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameActive: 0
   isGameFinished: 0
-  chocolatedSurface: 0
 --- !u!114 &1705848368 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8114087753915386504, guid: 9c31b491dba521f438a7c879ca36c0df,
@@ -1417,6 +1416,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669532175960414249, guid: c79f1e797d6e78f47b21271015578a53,
+        type: 3}
+      propertyPath: particles
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c79f1e797d6e78f47b21271015578a53, type: 3}

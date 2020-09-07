@@ -58,7 +58,6 @@ public class TestMeshCtr : MonoBehaviour
     private float singleForce;
     public void AddForcce(Vector3 pos, float force)
     { 
-        Debug.Log("Bingo");
         pos=transform.worldToLocalMatrix.MultiplyPoint(pos);
         for (int i = 0; i < mesh.vertices.Length; i++)
         {

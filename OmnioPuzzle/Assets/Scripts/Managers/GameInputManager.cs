@@ -29,8 +29,8 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveForward() {
+        //Ön taraf hareket etmeye müsait değilse
         if (!CanMoveForward()) {
-            //Bu noktada küçük bir animasyon tetikle.
             return;
         }
         if (tryToMove) {
@@ -71,8 +71,8 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveBack() {
+        //Arka taraf hareket etmeye müsait değilse
         if (!CanMoveBack()) { 
-            //Bu noktada küçük bir animasyon tetikle.
             return;
         }
         if (tryToMove) {
@@ -118,8 +118,9 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveLeft() {
+        //Sol taraf hareket etmeye müsait değilse
         if (!CanMoveLeft()) {
-            //Bu noktada küçük bir animasyon tetikle.
+            //O esnada hareket etmeye çalışmıyorsa
             if (!tryToMove) { 
                 StartCoroutine(TryTurnLeft());
             }
@@ -228,11 +229,13 @@ public class GameInputManager : MonoBehaviour {
     }
 
     private void Update() {
-        #if UNITY_EDITOR
-            PCInput();
-        #elif UNITY_ANDROID
-            TouchInput();
-        #endif
+        if (!GameSceneManagers.Game.isGameFinished) {
+            #if UNITY_EDITOR
+                PCInput();
+            #elif UNITY_ANDROID
+                TouchInput();
+            #endif
+        }
     }
 
 }

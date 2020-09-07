@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour {
 
     #region FROM_INSPECTOR
     public bool isGameActive;
+    public bool isGameFinished;
+    public int chocolatedSurface;
     #endregion
 
     #region UNITY_FUNCTIONS
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour {
         isGameActive = true;
     }
 
+    float counter;
     private void Update() {
         if (isGameActive) {
             Time.timeScale = 1;

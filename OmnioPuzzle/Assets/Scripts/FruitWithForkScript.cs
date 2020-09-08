@@ -6,7 +6,6 @@ public class FruitWithForkScript : MonoBehaviour {
 
     public Transform currentTurnLeftPoint;
     public Transform currentTurnRightPoint;
-    TestMeshCtr testMeshCtr;
 
     [Space(10)]
     public Transform[] turnPoints;
@@ -18,11 +17,9 @@ public class FruitWithForkScript : MonoBehaviour {
     private void Start() {
         currentTurnLeftPoint = turnPoints[i];
         currentTurnRightPoint = turnPoints[i + 1];
-        testMeshCtr = transform.GetChild(0).GetComponent<TestMeshCtr>();
     }
 
     public void TurnRight(bool chocolated) {
-        testMeshCtr.AddForcce(new Vector3(0, 0.0375f, 0.0375f), 20);
         i = (i + 1) % turnPoints.Length;
         currentTurnLeftPoint = turnPoints[i % turnPoints.Length];
         currentTurnRightPoint = turnPoints[(i + 1) % turnPoints.Length];
@@ -38,7 +35,6 @@ public class FruitWithForkScript : MonoBehaviour {
     }
 
     public void TurnLeft(bool chocolated) {
-        testMeshCtr.AddForcce(new Vector3(0, 0.0375f, -0.0375f), 20);
         i = ((i - 1) + turnPoints.Length) % turnPoints.Length;
         currentTurnLeftPoint = turnPoints[i % turnPoints.Length];
         currentTurnRightPoint = turnPoints[((i + 1) + turnPoints.Length) % turnPoints.Length];
@@ -54,7 +50,6 @@ public class FruitWithForkScript : MonoBehaviour {
     }
 
     public void MoveForward(bool chocolated) {
-        testMeshCtr.AddForcce(new Vector3(-0.0375f, 0.0375f, -0.0375f), 20);
         //Çikolatalanan yüzeyi aktif et.
         if (chocolated) {
             if (!chocolateSurfaces[i].activeSelf) {
@@ -66,7 +61,6 @@ public class FruitWithForkScript : MonoBehaviour {
     }
 
     public void MoveBack(bool chocolated) {
-        testMeshCtr.AddForcce(new Vector3(0.0375f, 0.0375f, 0), 20);
         //Çikolatalanan yüzeyi aktif et.
         if (chocolated) {
             if (!chocolateSurfaces[i].activeSelf) {

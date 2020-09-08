@@ -1150,7 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ef75d5e23dc644fa1659908796b008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelEnum: 1
+  levelEnum: 0
   spawnPoint: {fileID: 8492439065578799354, guid: 53d42a10252de00459a015ac59c25e30,
     type: 3}
   boardWood: {fileID: 1448396670037941226, guid: 21359fd980ff1d64a91a69e2f91143b0,
@@ -1186,7 +1186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f677077cc5cdb0146a8acd835664c2cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputType: 0
 --- !u!114 &1490014339
 MonoBehaviour:
   m_ObjectHideFlags: 0

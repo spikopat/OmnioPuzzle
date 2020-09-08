@@ -33,6 +33,7 @@ public class GameSceneSpawnManager : MonoBehaviour {
     };
 
     #region FROM_INSPECTOR
+    [Header("Inspectordan Atananlar")]
     public GameObject spawnPoint;
     public GameObject boardWood;
     public GameObject fruitWithFork;

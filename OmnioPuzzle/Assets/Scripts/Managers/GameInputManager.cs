@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InputMethod {
-    PCInput,
-    TouchInput
-}
 public class GameInputManager : MonoBehaviour {
 
     FruitCurrentPos fruitCurrentPos;
 
-    public InputMethod inputType;
     //Hareket denemeleri coroutinelerinde kullanılıyor.
     bool tryToMove;
 

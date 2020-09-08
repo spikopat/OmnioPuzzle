@@ -72,7 +72,7 @@ public class GameInputManager : MonoBehaviour {
 
     void MoveBack() {
         //Arka taraf hareket etmeye müsait değilse
-        if (!CanMoveBack()) { 
+        if (!CanMoveBack()) {
             return;
         }
         if (tryToMove) {
@@ -121,7 +121,7 @@ public class GameInputManager : MonoBehaviour {
         //Sol taraf hareket etmeye müsait değilse
         if (!CanMoveLeft()) {
             //O esnada hareket etmeye çalışmıyorsa
-            if (!tryToMove) { 
+            if (!tryToMove) {
                 StartCoroutine(TryTurnLeft());
             }
             return;
@@ -147,9 +147,9 @@ public class GameInputManager : MonoBehaviour {
 
     IEnumerator TryTurnLeft() {
         tryToMove = true;
-        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, 20 );
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, 20);
         yield return new WaitForSeconds(0.5f);
-        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, -20 );
+        GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnLeftPoint.position, Vector3.forward, -20);
         tryToMove = false;
         yield return null;
     }
@@ -194,7 +194,7 @@ public class GameInputManager : MonoBehaviour {
         //Çevirme işlemleri.
         GameSceneManagers.Spawn.spawnedFruitWithFork.transform.RotateAround(GameSceneManagers.Spawn.spawnedFruitWithFork.currentTurnRightPoint.position, Vector3.back, 90);
         GameSceneManagers.Spawn.spawnedFruitWithFork.TurnRight(chocolated);
-        
+
         //Pozisyonun değiştiğini kaydet.
         GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y].isPuzzleOnGround = false;
         GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y + 1].isPuzzleOnGround = true;
@@ -224,17 +224,63 @@ public class GameInputManager : MonoBehaviour {
         }
     }
 
+    private Vector3 fp;   //First touch position
+    private Vector3 lp;   //Last touch position
+    private float dragDistance;  //minimum distance for a swipe to be registered
+
     private void TouchInput() {
-       
+        if (Input.touchCount == 1) // user is touching the screen with a single touch
+         {
+            Touch touch = Input.GetTouch(0); // get the touch
+            if (touch.phase == TouchPhase.Began) //check for the first touch
+            {
+                fp = touch.position;
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Moved) // update the last position based on where they moved
+            {
+                lp = touch.position;
+            }
+            else if (touch.phase == TouchPhase.Ended) //check if the finger is removed from the screen
+            {
+                lp = touch.position;  //last touch position. Ommitted if you use list
+
+                //Check if drag distance is greater than 20% of the screen height
+                if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance) {//It's a drag
+                                                                                                     //check if the drag is vertical or horizontal
+                    if (Mathf.Abs(lp.x - fp.x) > Mathf.Abs(lp.y - fp.y)) {   //If the horizontal movement is greater than the vertical movement...
+                        if ((lp.x > fp.x))  //If the movement was to the right)
+                        {   //Right swipe
+                            MoveRight();
+                        }
+                        else {   //Left swipe
+                            MoveLeft();
+                        }
+                    }
+                    else {   //the vertical movement is greater than the horizontal movement
+                        if (lp.y > fp.y)  //If the movement was up
+                        {   //Up swipe
+                            MoveForward();
+                        }
+                        else {   //Down swipe
+                            MoveBack();
+                        }
+                    }
+                }
+                else {   //It's a tap as the drag distance is less than 20% of the screen height
+                    Debug.Log("Tap");
+                }
+            }
+        }
     }
 
     private void Update() {
         if (!GameSceneManagers.Game.isGameFinished) {
-            #if UNITY_EDITOR
-                PCInput();
-            #elif UNITY_ANDROID
+#if UNITY_EDITOR
+            PCInput();
+#elif UNITY_ANDROID
                 TouchInput();
-            #endif
+#endif
         }
     }
 

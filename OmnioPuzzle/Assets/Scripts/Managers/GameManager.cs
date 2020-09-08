@@ -9,20 +9,41 @@ public class GameManager : MonoBehaviour {
     public bool isGameFinished;
     public float lastChocolatedTime;
     private int chocolatedSurface;
+    #endregion
+
     public int ChocolatedSurface {
         get {
             return chocolatedSurface;
         }
         set {
-            lastChocolatedTime = Time.time;
+            //Level değişkenini arttır oyunu bitir ve bitiş animasyonlarına geç.
+            lastChocolatedTime = Time.timeSinceLevelLoad;
             chocolatedSurface = value;
             if (chocolatedSurface == 4) {
                 isGameFinished = true;
+                CurrentLevel++;
                 FinishAnim1();
             }
         }
     }
-    #endregion
+
+    int currentLevel;
+    public int CurrentLevel {
+        get {
+            if (PlayerPrefs.HasKey("CurrentLevel")) {
+                currentLevel = PlayerPrefs.GetInt("CurrentLevel");
+            }
+            else {
+                currentLevel = 0;
+                PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+            }
+            return currentLevel;
+        }
+        set {
+            currentLevel = value % 3;
+            PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+        }
+    }
 
     //Çatalı yukarı kaldır ve 2.animasyonu tetikle.
     void FinishAnim1() {
@@ -63,7 +84,7 @@ public class GameManager : MonoBehaviour {
             Time.timeScale = 0;
         }
         if (!isGameFinished) {
-            if (Time.time - lastChocolatedTime > 10) {
+            if (Time.timeSinceLevelLoad - lastChocolatedTime > 10) {
                 GameSceneManagers.UI.inGamePanel.levelFailedText.SetActive(true);
                 isGameFinished = true;
             }

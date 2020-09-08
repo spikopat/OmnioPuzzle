@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChocolatePaperScript : MonoBehaviour {
 
@@ -42,7 +43,16 @@ public class ChocolatePaperScript : MonoBehaviour {
             .SetLoops(1, LoopType.Incremental)
             .SetEase(Ease.OutQuad);
 
-        transform.DOMoveY(0.25f, 1);
+        transform.DOMoveY(0.25f, 1).OnComplete(() => FourthState());
+    }
+
+    void FourthState() {
+        StartCoroutine(WaitForLoadScene());
+    }
+
+    IEnumerator WaitForLoadScene() {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
     }
 
     IEnumerator StartParticles() {

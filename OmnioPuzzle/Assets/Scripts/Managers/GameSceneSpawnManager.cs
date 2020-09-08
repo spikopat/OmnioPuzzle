@@ -16,6 +16,8 @@ public class GameSceneSpawnManager : MonoBehaviour {
     
     public LevelEnum levelEnum;
 
+    
+
     int[,] level1 = { 
         { 2, 1, 1, 2 }, 
         { 1, 1, 2, 0 }, 
@@ -38,20 +40,24 @@ public class GameSceneSpawnManager : MonoBehaviour {
     public GameObject boardWood;
     public GameObject fruitWithFork;
 
-    [Header("Board")]
+    [Space(10)]
     public BoardScript boardScript;
-
     public float offsetValue;
     #endregion
 
     public Puzzle[,] grid;
     int z, x;
     float boardWoodSize;
+
+    [HideInInspector]
     public float fruitWithForkSize;
 
     //Seçilmiş olan levelin değerlerini tutar.
     int[,] selectedLevel;
+
+    [HideInInspector]
     public Transform lastSpawnedObject;
+    [HideInInspector]
     public FruitWithForkScript spawnedFruitWithFork;
 
     void SpawnLevel() {
@@ -98,6 +104,16 @@ public class GameSceneSpawnManager : MonoBehaviour {
         }
         grid = new Puzzle[z, x];
     }
+    
+    void GetCurrentLevel() {
+        if (GameSceneManagers.Game.CurrentLevel == 0) {
+            levelEnum = LevelEnum.Level1;
+        }else if (GameSceneManagers.Game.CurrentLevel == 1) {
+            levelEnum = LevelEnum.Level2;
+        }else if (GameSceneManagers.Game.CurrentLevel == 2) {
+            levelEnum = LevelEnum.Level3;
+        }
+    }
 
     void GetBounds() {
         boardWoodSize = boardWood.transform.GetChild(0).GetComponent<MeshRenderer>().bounds.size.x;
@@ -119,11 +135,11 @@ public class GameSceneSpawnManager : MonoBehaviour {
 
     #region UNITY_FUNCTIONS
     private void Start() {
+        GetCurrentLevel();
         CreateGridArray();
         GetBounds();
         SpawnLevel();
-        SpawnForkWithFruit();
-        
+        SpawnForkWithFruit();        
     }
     #endregion
 

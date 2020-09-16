@@ -176,6 +176,7 @@ namespace OmniSARTechnologies.LiteFPSCounter {
 
         private void Start() {
             Initialize();
+            Application.targetFrameRate = -1;
         }
 
         private void OnEnable() {

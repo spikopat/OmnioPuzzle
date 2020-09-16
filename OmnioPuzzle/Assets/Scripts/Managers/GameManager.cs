@@ -74,6 +74,8 @@ public class GameManager : MonoBehaviour {
     #region UNITY_FUNCTIONS
     private void Start() {
         isGameActive = true;
+        Application.targetFrameRate = -1;
+        QualitySettings.vSyncCount = 1;
     }
 
     float counter;

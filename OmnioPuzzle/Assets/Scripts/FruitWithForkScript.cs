@@ -29,8 +29,8 @@ public class FruitWithForkScript : MonoBehaviour {
             if (!chocolateSurfaces[i].activeSelf) {
                 chocolateSurfaces[i].SetActive(true);
                 GameSceneManagers.Game.ChocolatedSurface++;
+                chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
             }
-            //chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
         }
     }
 
@@ -44,8 +44,8 @@ public class FruitWithForkScript : MonoBehaviour {
             if (!chocolateSurfaces[i].activeSelf) {
                 chocolateSurfaces[i].SetActive(true);
                 GameSceneManagers.Game.ChocolatedSurface++;
+                chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
             }
-            //chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
         }
     }
 
@@ -55,8 +55,8 @@ public class FruitWithForkScript : MonoBehaviour {
             if (!chocolateSurfaces[i].activeSelf) {
                 chocolateSurfaces[i].SetActive(true);
                 GameSceneManagers.Game.ChocolatedSurface++;
+                chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
             }
-            //chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
         }
     }
 
@@ -66,8 +66,8 @@ public class FruitWithForkScript : MonoBehaviour {
             if (!chocolateSurfaces[i].activeSelf) {
                 chocolateSurfaces[i].SetActive(true);
                 GameSceneManagers.Game.ChocolatedSurface++;
+                chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
             }
-            //chocolateSurfaces[i].transform.GetChild(0).GetComponent<ParticleSystem>().Play(true);
         }
     }
 

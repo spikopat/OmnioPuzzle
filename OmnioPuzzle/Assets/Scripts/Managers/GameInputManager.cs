@@ -24,13 +24,14 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveForward() {
+        if (tryToMove) {
+            return;
+        }
         //Ön taraf hareket etmeye müsait değilse
         if (!CanMoveForward()) {
             return;
         }
-        if (tryToMove) {
-            return;
-        }
+        
 
         //Arkada çikolata varsa
         bool chocolated = false;
@@ -66,13 +67,14 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveBack() {
+        if (tryToMove) {
+            return;
+        }
         //Arka taraf hareket etmeye müsait değilse
         if (!CanMoveBack()) {
             return;
         }
-        if (tryToMove) {
-            return;
-        }
+        
 
         //Arkada çikolata varsa
         bool chocolated = false;
@@ -113,6 +115,9 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveLeft() {
+        if (tryToMove) {
+            return;
+        }
         //Sol taraf hareket etmeye müsait değilse
         if (!CanMoveLeft()) {
             //O esnada hareket etmeye çalışmıyorsa
@@ -121,9 +126,7 @@ public class GameInputManager : MonoBehaviour {
             }
             return;
         }
-        if (tryToMove) {
-            return;
-        }
+        
 
         //Solda çikolata varsa
         bool chocolated = false;
@@ -171,6 +174,9 @@ public class GameInputManager : MonoBehaviour {
     }
 
     void MoveRight() {
+        if (tryToMove) {
+            return;
+        }
         if (!CanMoveRight()) {
             //Bu noktada küçük bir animasyon tetikle.
             if (!tryToMove) {
@@ -178,9 +184,7 @@ public class GameInputManager : MonoBehaviour {
             }
             return;
         }
-        if (tryToMove) {
-            return;
-        }
+        
         //Sağda çikolata varsa
         bool chocolated = false;
         if (GameSceneManagers.Spawn.grid[fruitCurrentPos.x, fruitCurrentPos.y + 1].blockType == BlockType.Chocolate)
